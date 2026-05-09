@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FuelFit Planner</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Fitness meal planner</p>
+          <h1>FuelFit Planner</h1>
+        </div>
+      </header>
+
+      <div class="layout-grid">
+        <section class="panel profile-panel" id="profilePanel">
+          <div class="section-heading">
+            <p class="eyebrow">Profile</p>
+            <h2>Body details</h2>
+          </div>
+
+          <form class="form-grid" id="profileForm">
+            <label class="field">
+              <span>Age</span>
+              <input id="age" name="age" type="number" min="13" max="100" value="22" required />
+            </label>
+
+            <label class="field">
+              <span>Height cm</span>
+              <input id="height_cm" name="height_cm" type="number" min="90" max="250" value="178" step="0.1" required />
+            </label>
+
+            <label class="field">
+              <span>Current kg</span>
+              <input id="current_weight_kg" name="current_weight_kg" type="number" min="30" max="300" value="76" step="0.1" required />
+            </label>
+
+            <label class="field">
+              <span>Goal kg</span>
+              <input id="goal_weight_kg" name="goal_weight_kg" type="number" min="30" max="300" value="82" step="0.1" required />
+            </label>
+
+            <label class="field">
+              <span>Sex</span>
+              <select id="sex" name="sex" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Activity</span>
+              <select id="activity_level" name="activity_level" required>
+                <option value="sedentary">Sedentary</option>
+                <option value="light">Light</option>
+                <option value="moderate" selected>Moderate</option>
+                <option value="active">Active</option>
+                <option value="athlete">Athlete</option>
+              </select>
+            </label>
+
+            <label class="field wide">
+              <span>Goal</span>
+              <select id="goal_type" name="goal_type" required>
+                <option value="cut">Cutting</option>
+                <option value="maintain">Maintaining</option>
+                <option value="bulk" selected>Bulking</option>
+              </select>
+            </label>
+
+            <button class="primary-button wide" type="submit">Save profile and plan meals</button>
+          </form>
+        </section>
+
+        <section class="panel dashboard-panel" id="dashboardPanel">
+          <div class="section-heading row-heading">
+            <div>
+              <p class="eyebrow">Dashboard</p>
+              <h2>Today's targets</h2>
+            </div>
+            <button class="secondary-button" id="generatePlanBtn" type="button">Regenerate</button>
+          </div>
+
+          <div class="metrics-grid" id="metricsGrid"></div>
+
+          <div class="macro-block" id="macroBlock" hidden>
+            <canvas id="macroCanvas" width="460" height="160" aria-label="Macro target chart"></canvas>
+            <div class="macro-bars" id="macroBars"></div>
+          </div>
+
+          <div class="meal-heading">
+            <h3>Meal plan</h3>
+            <span id="planDate"></span>
+          </div>
+          <div class="meal-list" id="mealList"></div>
+        </section>
+      </div>
+
+      <p class="status-line" id="statusLine" role="status" aria-live="polite"></p>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
